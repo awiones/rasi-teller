@@ -1,0 +1,454 @@
+{
+    "fortunes": [
+        {
+            "emoji": "💼",
+            "message": "Today you'll receive an important work email that requires immediate attention. It could lead to a new opportunity.",
+            "category": "career",
+            "area": "work"
+        },
+        {
+            "emoji": "💕",
+            "message": "Someone you've been thinking about will reach out to you today. Expect a message around evening time.",
+            "category": "relationships",
+            "area": "personal"
+        },
+        {
+            "emoji": "💰",
+            "message": "Check your old accounts or wallet today - you'll find some forgotten money or an unclaimed refund.",
+            "category": "finance",
+            "area": "money"
+        },
+        {
+            "emoji": "🤝",
+            "message": "A colleague will ask for your help today. Your assistance will be remembered and rewarded later.",
+            "category": "work",
+            "area": "relationships"
+        },
+        {
+            "emoji": "📱",
+            "message": "You'll receive unexpected good news through a phone call today. Keep your phone charged and nearby.",
+            "category": "communication",
+            "area": "general"
+        },
+        {
+            "emoji": "🎯",
+            "message": "Today is ideal for that decision you've been postponing. The outcome will be in your favor.",
+            "category": "action",
+            "area": "decisions"
+        },
+        {
+            "emoji": "🚗",
+            "message": "Leave earlier than usual today - unexpected traffic or delays might affect your commute.",
+            "category": "warning",
+            "area": "travel"
+        },
+        {
+            "emoji": "💡",
+            "message": "You'll have a breakthrough idea at work today. Write it down immediately - it's more valuable than you think.",
+            "category": "career",
+            "area": "ideas"
+        },
+        {
+            "emoji": "👥",
+            "message": "You'll meet someone today who will become important in your professional life. Pay attention to new introductions.",
+            "category": "networking",
+            "area": "career"
+        },
+        {
+            "emoji": "📊",
+            "message": "A financial opportunity will present itself today. Do your research before making any commitments.",
+            "category": "finance",
+            "area": "opportunity"
+        },
+        {
+            "emoji": "🎁",
+            "message": "An unexpected gift or favor will come your way today. Show genuine gratitude - it will lead to more goodwill.",
+            "category": "surprise",
+            "area": "personal"
+        },
+        {
+            "emoji": "📞",
+            "message": "An old friend will reconnect with you today. This reunion will lead to positive changes in your life.",
+            "category": "relationships",
+            "area": "friendship"
+        },
+        {
+            "emoji": "⚠️",
+            "message": "Double-check all important documents today. You'll catch a significant error that could have caused problems.",
+            "category": "warning",
+            "area": "work"
+        },
+        {
+            "emoji": "💪",
+            "message": "Start that health routine today - you'll see surprising results faster than expected.",
+            "category": "health",
+            "area": "wellness"
+        },
+        {
+            "emoji": "📈",
+            "message": "Your recent hard work will be noticed today. A recognition or reward is coming your way.",
+            "category": "success",
+            "area": "achievement"
+        },
+        {
+            "emoji": "🚫",
+            "message": "Be careful with someone who acts too friendly today. Their intentions may not be genuine.",
+            "category": "warning",
+            "area": "relationships"
+        },
+        {
+            "emoji": "📲",
+            "message": "Don't share personal information online today. Someone might try to scam you through social media.",
+            "category": "warning",
+            "area": "security"
+        },
+        {
+            "emoji": "🤔",
+            "message": "A friend will ask to borrow money today. It's best to politely decline to avoid future complications.",
+            "category": "warning",
+            "area": "finance"
+        },
+        {
+            "emoji": "🔍",
+            "message": "Double-check your belongings before leaving any place today. You might forget something important.",
+            "category": "caution",
+            "area": "personal"
+        },
+        {
+            "emoji": "🗣️",
+            "message": "Someone will spread gossip about you today. Stay professional and don't engage in workplace drama.",
+            "category": "warning",
+            "area": "work"
+        },
+        {
+            "emoji": "🚶",
+            "message": "Be extra aware of your surroundings when walking alone today, especially after dark.",
+            "category": "safety",
+            "area": "personal"
+        },
+        {
+            "emoji": "🔒",
+            "message": "Check that you've locked all doors and windows before leaving home today.",
+            "category": "safety",
+            "area": "home"
+        },
+        {
+            "emoji": "💳",
+            "message": "Review your recent bank transactions today. You might spot an unauthorized charge.",
+            "category": "finance",
+            "area": "security"
+        },
+        {
+            "emoji": "🤒",
+            "message": "Pay attention to any unusual health symptoms today. Don't ignore what your body is telling you.",
+            "category": "health",
+            "area": "wellness"
+        },
+        {
+            "emoji": "📝",
+            "message": "Read contracts or agreements carefully today. Don't sign anything without understanding all terms.",
+            "category": "caution",
+            "area": "legal"
+        },
+        {
+            "emoji": "🚘",
+            "message": "Drive extra carefully today. Someone else's reckless driving might affect your journey.",
+            "category": "safety",
+            "area": "travel"
+        },
+        {
+            "emoji": "💬",
+            "message": "Think twice before sharing secrets today. Not everyone can be trusted with sensitive information.",
+            "category": "caution",
+            "area": "relationships"
+        },
+        {
+            "emoji": "🔌",
+            "message": "Check your electrical appliances today. Unplug anything that feels unusually warm.",
+            "category": "safety",
+            "area": "home"
+        },
+        {
+            "emoji": "🍽️",
+            "message": "Be careful with food today. Check expiration dates and avoid questionable restaurants.",
+            "category": "health",
+            "area": "food"
+        },
+        {
+            "emoji": "📧",
+            "message": "Be wary of unexpected emails asking for personal information. A phishing attempt is likely today.",
+            "category": "security",
+            "area": "digital"
+        },
+        {
+            "emoji": "🌟",
+            "message": "Great news! A long-awaited wish will finally come true today. The universe has aligned in your favor.",
+            "category": "success",
+            "area": "personal"
+        },
+        {
+            "emoji": "💖",
+            "message": "Someone has secret feelings for you and will express them today. Expect a heartfelt confession.",
+            "category": "love",
+            "area": "relationships"
+        },
+        {
+            "emoji": "💰",
+            "message": "A surprising financial gain is coming today - check your lottery tickets or investments carefully.",
+            "category": "fortune",
+            "area": "finance"
+        },
+        {
+            "emoji": "🎓",
+            "message": "You'll receive excellent news about an application or admission you've been waiting for.",
+            "category": "success",
+            "area": "education"
+        },
+        {
+            "emoji": "🏆",
+            "message": "Your hard work is about to pay off! A major recognition or award is coming your way today.",
+            "category": "achievement",
+            "area": "career"
+        },
+        {
+            "emoji": "✈️",
+            "message": "An exciting travel opportunity will present itself today. Say yes - it will lead to amazing experiences.",
+            "category": "opportunity",
+            "area": "travel"
+        },
+        {
+            "emoji": "🎨",
+            "message": "Your creative project will receive recognition today. Someone influential will notice your talent.",
+            "category": "success",
+            "area": "arts"
+        },
+        {
+            "emoji": "🤝",
+            "message": "A valuable business partnership will form today. This connection will bring long-term prosperity.",
+            "category": "success",
+            "area": "business"
+        },
+        {
+            "emoji": "🏡",
+            "message": "Good news about your home situation arrives today - whether it's a new place or a positive change.",
+            "category": "fortune",
+            "area": "home"
+        },
+        {
+            "emoji": "💪",
+            "message": "Today marks the beginning of a successful health journey. Your efforts will show amazing results.",
+            "category": "wellness",
+            "area": "health"
+        },
+        {
+            "emoji": "👨‍👩‍👧‍👦",
+            "message": "A family celebration is coming! Expect joyful news from a relative today.",
+            "category": "happiness",
+            "area": "family"
+        },
+        {
+            "emoji": "💎",
+            "message": "You'll discover something valuable today that you thought was lost forever.",
+            "category": "fortune",
+            "area": "personal"
+        },
+        {
+            "emoji": "🎵",
+            "message": "Your talents will be recognized today. Someone important will praise your abilities.",
+            "category": "success",
+            "area": "skills"
+        },
+        {
+            "emoji": "🌈",
+            "message": "All your recent struggles will resolve today. Multiple problems will suddenly find solutions.",
+            "category": "relief",
+            "area": "general"
+        },
+        {
+            "emoji": "🎰",
+            "message": "Take that calculated risk today - luck is strongly in your favor and success is guaranteed.",
+            "category": "luck",
+            "area": "opportunity"
+        },
+        {
+            "emoji": "☀️",
+            "message": "Today will flow smoothly with no major surprises. Everything will proceed as normal.",
+            "category": "neutral",
+            "area": "general"
+        },
+        {
+            "emoji": "📅",
+            "message": "Expect a typical day ahead. Your regular routine will bring comfort and stability.",
+            "category": "neutral",
+            "area": "daily"
+        },
+        {
+            "emoji": "🌤️",
+            "message": "A calm, steady day awaits. Nothing particularly exciting or concerning will occur.",
+            "category": "neutral",
+            "area": "general"
+        },
+        {
+            "emoji": "⚖️",
+            "message": "Today maintains perfect balance - neither exceptionally good nor bad. Embrace the peaceful ordinary.",
+            "category": "neutral",
+            "area": "balance"
+        },
+        {
+            "emoji": "🕰️",
+            "message": "The day will unfold at its natural pace. No need to rush or worry about unexpected events.",
+            "category": "neutral",
+            "area": "time"
+        },
+        {
+            "emoji": "📚",
+            "message": "A challenging assignment will become easier with help from a classmate. Don't hesitate to study together.",
+            "category": "education",
+            "area": "school"
+        },
+        {
+            "emoji": "🎮",
+            "message": "Take a break from studying to refresh your mind. A short gaming session will help you focus better later.",
+            "category": "leisure",
+            "area": "recreation"
+        },
+        {
+            "emoji": "📝",
+            "message": "An upcoming test will go well if you start preparing today. Focus on the topics you find most challenging.",
+            "category": "education",
+            "area": "academics"
+        },
+        {
+            "emoji": "🤝",
+            "message": "A new friendship will form during lunch break. Be open to conversations with classmates.",
+            "category": "friendship",
+            "area": "school"
+        },
+        {
+            "emoji": "🎨",
+            "message": "Your creative project will impress your teachers. Trust your artistic instincts.",
+            "category": "creativity",
+            "area": "school"
+        },
+        {
+            "emoji": "⭐",
+            "message": "Your participation in class today will earn you extra credit. Don't be shy to raise your hand.",
+            "category": "success",
+            "area": "academics"
+        },
+        {
+            "emoji": "🎭",
+            "message": "Consider joining a school club today. You'll discover a hidden talent.",
+            "category": "activities",
+            "area": "school"
+        },
+        {
+            "emoji": "🏃",
+            "message": "Success awaits in today's PE class. Your practice will pay off.",
+            "category": "sports",
+            "area": "school"
+        },
+        {
+            "emoji": "📱",
+            "message": "A social media break will help you concentrate better on your studies today.",
+            "category": "focus",
+            "area": "learning"
+        },
+        {
+            "emoji": "🎵",
+            "message": "Your musical or artistic talents will be noticed in class today. Share your creativity.",
+            "category": "arts",
+            "area": "expression"
+        },
+        {
+            "emoji": "🌱",
+            "message": "Start that garden project today - your plants will thrive beyond expectations.",
+            "category": "hobby",
+            "area": "gardening"
+        },
+        {
+            "emoji": "🎸",
+            "message": "Pick up that musical instrument you've neglected - a surprising opportunity to perform will come soon.",
+            "category": "arts",
+            "area": "music"
+        },
+        {
+            "emoji": "🧘",
+            "message": "Your meditation practice today will lead to an important spiritual breakthrough.",
+            "category": "spiritual",
+            "area": "mindfulness"
+        },
+        {
+            "emoji": "🏺",
+            "message": "Check local antique shops today - you'll find a valuable collector's item at a bargain price.",
+            "category": "fortune",
+            "area": "collecting"
+        },
+        {
+            "emoji": "🐕",
+            "message": "Consider adopting a pet today - a special animal companion is waiting for you.",
+            "category": "pets",
+            "area": "companionship"
+        },
+        {
+            "emoji": "🎲",
+            "message": "Host a game night soon - it will strengthen important friendships and create lasting memories.",
+            "category": "social",
+            "area": "entertainment"
+        },
+        {
+            "emoji": "🧪",
+            "message": "An experiment or project you've been working on will have unexpected positive results.",
+            "category": "science",
+            "area": "discovery"
+        },
+        {
+            "emoji": "🎣",
+            "message": "Take time for outdoor activities this weekend - a peaceful adventure awaits.",
+            "category": "leisure",
+            "area": "outdoors"
+        },
+        {
+            "emoji": "👨‍🍳",
+            "message": "Try cooking that challenging recipe today - it will turn out perfectly and impress everyone.",
+            "category": "cooking",
+            "area": "skills"
+        },
+        {
+            "emoji": "🎨",
+            "message": "Your unique perspective will inspire others - share your artistic vision freely.",
+            "category": "creativity",
+            "area": "inspiration"
+        },
+        {
+            "emoji": "🌿",
+            "message": "A natural remedy will solve a persistent problem - look into traditional healing methods.",
+            "category": "health",
+            "area": "alternative"
+        },
+        {
+            "emoji": "🎭",
+            "message": "Step out of your comfort zone in self-expression - your authenticity will attract new opportunities.",
+            "category": "personal",
+            "area": "growth"
+        },
+        {
+            "emoji": "🎪",
+            "message": "Say yes to that unusual invitation - it will lead to an extraordinary experience.",
+            "category": "adventure",
+            "area": "spontaneous"
+        },
+        {
+            "emoji": "🧩",
+            "message": "A complex problem that's been bothering you will suddenly become clear - the solution is simpler than you think.",
+            "category": "insight",
+            "area": "problem-solving"
+        },
+        {
+            "emoji": "🎯",
+            "message": "Your precise attention to detail today will prevent a future mishap - stay focused.",
+            "category": "precision",
+            "area": "caution"
+        }
+    ]
+}

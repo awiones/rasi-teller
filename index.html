@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Get your daily fortune and predictions with Rasi Teller">
+    <meta name="theme-color" content="#302b63">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="logo.webp">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <!-- Security headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.gstatic.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Preload critical fonts/images -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- Add content caching -->
+    <meta http-equiv="Cache-Control" content="max-age=86400">
+</head>
+<body>
+    <div class="stars" id="starsContainer"></div>
+    <div class="container">
+        <h1>✨ Rasi Teller ✨</h1>
+        <p class="subtitle">
+            Rasi Teller will tell what happens for today 
+            <span id="currentDate" class="current-date"></span>
+        </p>
+        <div class="input-group">
+            <div class="birthday-inputs">
+                <div class="birthday-input">
+                    <label for="day">Day</label>
+                    <input type="number" id="day" min="1" max="31" placeholder="DD" required>
+                </div>
+                <div class="birthday-input">
+                    <label for="month">Month</label>
+                    <input type="number" id="month" min="1" max="12" placeholder="MM" required>
+                </div>
+                <div class="birthday-input">
+                    <label for="year">Year</label>
+                    <input type="number" id="year" placeholder="YYYY" required>
+                </div>
+            </div>
+            <button onclick="tellFortune()" id="fortuneButton">Reveal Your Fortune</button>
+        </div>
+        <div id="countdownDisplay" class="countdown"></div>
+        <div id="errorDisplay" class="error"></div>
+    </div>
+
+    <!-- Separate container for current fortune -->
+    <div class="fortune-container" id="fortuneDisplay"></div>
+
+    <!-- Add new fortune history container -->
+    <div class="fortune-history">
+        <h2>✨ Your Fortune History ✨</h2>
+        <div id="fortuneHistoryContainer"></div>
+    </div>
+
+    <div class="popup-overlay" id="scanningPopup">
+        <div class="popup-box">
+            <div class="scanning-box">
+                <div class="scan-line"></div>
+                <div id="scanResults"></div>
+            </div>
+            <div class="scan-status">
+                <span id="scanStatus">🔮 Initializing Rasi Teller System</span>
+                <span class="loading-dots"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add popup container for fun messages -->
+    <div id="funPopupContainer"></div>
+    <script src="script.js" defer></script>
+</body>
+</html>
