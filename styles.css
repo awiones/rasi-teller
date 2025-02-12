@@ -180,11 +180,25 @@ body {
 
 h1 {
     text-align: center;
-    color: #a8b2ff;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;  /* Reduced margin */
-    text-shadow: 0 0 10px rgba(168, 178, 255, 0.5);
-    letter-spacing: 1px;
+    background: linear-gradient(45deg, #7f5af0, #a8b2ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(127, 90, 240, 0.5);
+    letter-spacing: 2px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 20px rgba(127, 90, 240, 0.5);
+    }
+    to {
+        text-shadow: 0 0 30px rgba(127, 90, 240, 0.8),
+                     0 0 40px rgba(168, 178, 255, 0.3);
+    }
 }
 
 .subtitle {
@@ -229,6 +243,10 @@ h1 {
 .birthday-input {
     flex: 1;
     position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(127, 90, 240, 0.3);
 }
 
 .birthday-input input {
@@ -236,12 +254,15 @@ h1 {
     padding: 0.8rem;
     border: 2px solid #7f5af0;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.08);
     color: #fff;
     font-size: 1.2rem; /* Increased font size */
     transition: all 0.3s ease;
     text-align: center; /* Center the numbers */
     letter-spacing: 1px; /* Space out the numbers slightly */
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(127, 90, 240, 0.5);
+    box-shadow: 0 0 15px rgba(127, 90, 240, 0.1);
 }
 
 .birthday-input input::placeholder {
@@ -259,6 +280,9 @@ h1 {
     border-color: #a8b2ff;
     box-shadow: 0 0 15px rgba(168, 178, 255, 0.2);
     background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #a8b2ff;
+    box-shadow: 0 0 20px rgba(168, 178, 255, 0.3);
 }
 
 .birthday-input label {
@@ -267,6 +291,27 @@ h1 {
     left: 5px;
     color: #a8b2d1;
     font-size: 0.9rem;
+    color: #a8b2ff;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-shadow: 0 0 5px rgba(168, 178, 255, 0.3);
+}
+
+.input-label {
+    text-align: center;
+    color: #a8b2ff;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 8px rgba(168, 178, 255, 0.5);
+    font-weight: 500;
+}
+
+.input-sublabel {
+    text-align: center;
+    color: #a8b2d1;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
 }
 
 button {
@@ -785,6 +830,15 @@ button:disabled {
     100% { transform: scale(1); }
 }
 
+.birthday-section {
+    background: rgba(127, 90, 240, 0.1);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(127, 90, 240, 0.2);
+    box-shadow: 0 0 20px rgba(127, 90, 240, 0.1);
+}
+
 @media screen and (max-width: 768px) {
     .container, .fortune-container, .fortune-history {
         width: 95%;
@@ -855,6 +909,18 @@ button:disabled {
 
     body {
         padding: 10px;
+    }
+
+    .birthday-section {
+        padding: 1rem;
+    }
+    
+    .input-label {
+        font-size: 1.2rem;
+    }
+    
+    h1 {
+        font-size: 2.3rem;
     }
 }
 
