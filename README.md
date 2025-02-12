@@ -13,7 +13,7 @@
   <a href="https://github.com/awiones/rasi-teller/network/members">
     <img src="https://img.shields.io/github/forks/awiones/rasi-teller?style=social" alt="GitHub Forks">
   </a>
-  <a href="https://github.com/awiones/rasi-teller">
+  <a href="https://awiones.github.io/rasi-teller/">
     <img src="https://img.shields.io/badge/GitHub-Rasi%20Teller-blue?logo=github" alt="Visit GitHub Repository">
   </a>
 </p>
