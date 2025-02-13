@@ -526,9 +526,9 @@ body {
 }
 
 @keyframes warningPulse {
-    0% { opacity: 0.5; }
+    0% { opacity: 0.8; }
     50% { opacity: 1; }
-    100% { opacity: 0.5; }
+    100% { opacity: 0.8; }
 }
 
 @keyframes pulsePoint {
@@ -787,6 +787,35 @@ body {
         transition: all 0.3s ease;
         z-index: 2;
     }
+
+    /* Enhance line visibility for mobile */
+    .constellation-line {
+        height: 2px !important; /* Force consistent height */
+        opacity: 1 !important; /* Force visibility */
+        background: rgba(127, 90, 240, 0.8) !important; /* Brighter lines */
+        box-shadow: 0 0 10px rgba(127, 90, 240, 0.6) !important;
+        pointer-events: none;
+        /* Force GPU acceleration */
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        will-change: transform, width, left, top;
+        display: block !important; /* Force display */
+        visibility: visible !important; /* Force visibility */
+    }
+
+    .constellation-container {
+        transform-origin: center center !important;
+        -webkit-transform-origin: center center !important;
+        /* Force GPU acceleration */
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        perspective: 1000;
+        -webkit-perspective: 1000;
+    }
 }
 
 /* Add Touch Support */
@@ -878,5 +907,22 @@ body {
     100% {
         opacity: 1;
         transform: translate(-50%, -50%);
+    }
+}
+
+.warning-line {
+    height: 3px !important;
+    background: rgba(255, 0, 0, 0.8) !important;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.6),
+                0 0 12px rgba(255, 0, 0, 0.4) !important;
+}
+
+/* Enhance mobile warning lines */
+@media (max-width: 768px) {
+    .warning-line {
+        height: 4px !important;
+        background: rgba(255, 0, 0, 0.9) !important;
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.7),
+                   0 0 15px rgba(255, 0, 0, 0.5) !important;
     }
 }

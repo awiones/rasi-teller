@@ -19,6 +19,19 @@ document.addEventListener('DOMContentLoaded', () => {
     startLineUpdates(); // Add this line
     initializeMobileSupport();
     performanceOptimizations.init(); // Add this line
+
+    // Force initial line visibility check
+    setTimeout(() => {
+        const lines = document.querySelectorAll('.constellation-line');
+        lines.forEach(line => {
+            line.style.display = 'block';
+            line.style.visibility = 'visible';
+            line.style.opacity = '1';
+            if (line.updatePosition) {
+                line.updatePosition();
+            }
+        });
+    }, 1000);
 });
 
 const starConnections = new Map();
@@ -460,51 +473,36 @@ function createEnhancedLine(star1, star2, isSameCategory, complexity) {
     // Create main line
     const line = document.createElement('div');
     line.className = 'constellation-line';
-    container.appendChild(line); // Move this up to ensure the line is added to DOM
+    container.appendChild(line);
 
     // Store star references
     line.star1 = star1.element;
     line.star2 = star2.element;
 
-    // Update initial position
-    updateLinePosition(line);
-
-    // Add update method to line
-    line.updatePosition = () => updateLinePosition(line);
-
     // Check if either star is a warning category
     const isWarningConnection = star1.category === 'warning' || star2.category === 'warning';
     
     if (isWarningConnection) {
-        // Warning styling for the line
-        const baseOpacity = 0.6;
+        // Enhanced warning styling for the line
+        line.classList.add('warning-line');
+        const baseOpacity = 0.8; // Increased opacity for better visibility
         line.style.background = `
             linear-gradient(
                 90deg, 
-                rgba(255, 0, 0, ${baseOpacity}) 0%,
-                rgba(255, 50, 50, ${baseOpacity * 1.2}) 50%,
-                rgba(255, 0, 0, ${baseOpacity}) 100%
+                rgba(255, 60, 60, ${baseOpacity}) 0%,
+                rgba(255, 0, 0, ${baseOpacity * 1.2}) 50%,
+                rgba(255, 60, 60, ${baseOpacity}) 100%
             )
         `;
+        line.style.boxShadow = `
+            0 0 8px rgba(255, 0, 0, 0.6),
+            0 0 12px rgba(255, 0, 0, 0.4)
+        `;
+        line.style.height = '3px'; // Slightly thicker for warning lines
         
-        // Create simple arrow marker
-        const arrow = document.createElement('div');
-        arrow.className = 'warning-arrow';
-        arrow.style.animation = 'arrowPulse 1.5s infinite';
-        line.appendChild(arrow);
+        // Add pulsing animation class
+        line.style.animation = 'warningPulse 2s infinite';
         
-        // Store arrow reference
-        line.warningArrow = arrow;
-
-        // Update arrow position without rotation to keep it horizontal
-        const originalUpdate = line.updatePosition;
-        line.updatePosition = () => {
-            originalUpdate.call(line);
-            if (line.warningArrow) {
-                // No rotation needed, arrow will stay horizontal
-                line.warningArrow.style.transform = 'none';
-            }
-        };
     } else if (isSameCategory) {
         // Regular matching category styling
         const hue = getHueForCategory(star1.category);
@@ -537,6 +535,10 @@ function createEnhancedLine(star1, star2, isSameCategory, complexity) {
         `;
     }
 
+    // Update initial position
+    updateLinePosition(line);
+    line.updatePosition = () => updateLinePosition(line);
+
     return line;
 }
 
@@ -547,8 +549,11 @@ function updateLinePosition(line) {
     const containerTransform = getComputedStyle(container).transform;
     const matrix = new DOMMatrix(containerTransform);
     const scale = matrix.a;  // Get current scale from transform matrix
-
-    requestAnimationFrame(() => {
+    
+    // Force immediate update instead of using requestAnimationFrame on mobile
+    const isMobile = window.innerWidth <= 768;
+    
+    const updatePosition = () => {
         const star1Rect = line.star1.getBoundingClientRect();
         const star2Rect = line.star2.getBoundingClientRect();
         const containerRect = container.getBoundingClientRect();
@@ -564,12 +569,24 @@ function updateLinePosition(line) {
         const length = Math.hypot(dx, dy);
         const angle = Math.atan2(dy, dx);
 
-        // Set line position and dimensions
-        line.style.width = `${length}px`;
-        line.style.left = `${x1}px`;
-        line.style.top = `${y1}px`;
-        line.style.transform = `rotate(${angle}rad) translateZ(0)`;
-    });
+        // Force hardware acceleration and visibility
+        line.style.cssText = `
+            width: ${length}px;
+            left: ${x1}px;
+            top: ${y1}px;
+            transform: rotate(${angle}rad) translateZ(0);
+            -webkit-transform: rotate(${angle}rad) translateZ(0);
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        `;
+    };
+
+    if (isMobile) {
+        updatePosition(); // Immediate update for mobile
+    } else {
+        requestAnimationFrame(updatePosition);
+    }
 }
 
 function getHueForCategory(category) {
@@ -1318,11 +1335,33 @@ function createLatestIndicator(targetStar) {
 }
 
 function initializeMobileSupport() {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const isMobile = window.innerWidth <= 768;
     if (!isMobile) return;
 
     const container = document.getElementById('constellationContainer');
     
+    // Force line updates during touch events
+    container.addEventListener('touchmove', () => {
+        const lines = document.querySelectorAll('.constellation-line');
+        lines.forEach(line => {
+            if (line.updatePosition) {
+                line.updatePosition();
+            }
+        });
+    }, { passive: true });
+
+    // Force line updates after touch events
+    container.addEventListener('touchend', () => {
+        setTimeout(() => {
+            const lines = document.querySelectorAll('.constellation-line');
+            lines.forEach(line => {
+                if (line.updatePosition) {
+                    line.updatePosition();
+                }
+            });
+        }, 100);
+    }, { passive: true });
+
     // Adjust line visibility for mobile
     function updateMobileLines() {
         const lines = document.querySelectorAll('.constellation-line');
