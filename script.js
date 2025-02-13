@@ -297,13 +297,28 @@ function getCookie(name) {
 // Time-related functions
 function getTimeUntilTomorrow() {
     const now = new Date();
-    const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+    const tomorrow = new Date(now);
+    tomorrow.setHours(24, 0, 0, 0);
     return tomorrow - now;
 }
 
 function updateCountdown() {
     const lastReadingTime = getCookie('lastFortuneTime');
     if (lastReadingTime) {
+        const lastReadingDate = new Date(parseInt(lastReadingTime));
+        const now = new Date();
+        
+        // Check if it's a new day
+        if (lastReadingDate.getDate() !== now.getDate() || 
+            lastReadingDate.getMonth() !== now.getMonth() || 
+            lastReadingDate.getFullYear() !== now.getFullYear()) {
+            // Clear the cookie and enable the button
+            document.cookie = "lastFortuneTime=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.getElementById('countdownDisplay').innerHTML = '';
+            document.getElementById('fortuneButton').disabled = false;
+            return;
+        }
+
         const timeLeft = getTimeUntilTomorrow();
         const hours = Math.floor(timeLeft / (1000 * 60 * 60));
         const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
@@ -552,6 +567,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     setTimeout(createRandomShootingStar, 2000);
     
+    // Check every minute for countdown and midnight reset
     setInterval(updateCountdown, 60000);
     updateCountdown();
 
