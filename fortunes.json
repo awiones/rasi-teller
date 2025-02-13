@@ -1,6 +1,24 @@
 {
     "fortunes": [
         {
+            "emoji": "🌟",
+            "message": "Stay positive! Good things are coming your way.",
+            "category": "general",
+            "area": "life"
+        },
+        {
+            "emoji": "✨",
+            "message": "A pleasant surprise is waiting for you today.",
+            "category": "daily",
+            "area": "general"
+        },
+        {
+            "emoji": "🎯",
+            "message": "Focus on your goals. Success is within reach.",
+            "category": "motivation",
+            "area": "personal"
+        },
+        {
             "emoji": "💼",
             "message": "Today you'll receive an important work email that requires immediate attention. It could lead to a new opportunity.",
             "category": "career",
@@ -44,24 +62,6 @@
         },
         {
             "emoji": "💡",
-            "message": "You'll have a breakthrough idea at work today. Write it down immediately - it's more valuable than you think.",
-            "category": "career",
-            "area": "ideas"
-        },
-        {
-            "emoji": "👥",
-            "message": "You'll meet someone today who will become important in your professional life. Pay attention to new introductions.",
-            "category": "networking",
-            "area": "career"
-        },
-        {
-            "emoji": "📊",
-            "message": "A financial opportunity will present itself today. Do your research before making any commitments.",
-            "category": "finance",
-            "area": "opportunity"
-        },
-        {
-            "emoji": "🎁",
             "message": "An unexpected gift or favor will come your way today. Show genuine gratitude - it will lead to more goodwill.",
             "category": "surprise",
             "area": "personal"
@@ -449,6 +449,36 @@
             "message": "Your precise attention to detail today will prevent a future mishap - stay focused.",
             "category": "precision",
             "area": "caution"
+        },
+        {
+            "emoji": "⭐",
+            "message": "A great opportunity will present itself to you today. Stay alert and be ready to seize the moment!",
+            "category": "opportunity",
+            "area": "general"
+        },
+        {
+            "emoji": "💫",
+            "message": "Your creative energy is at its peak. Use this time to start that project you've been thinking about.",
+            "category": "creativity",
+            "area": "personal"
+        },
+        {
+            "emoji": "🌟",
+            "message": "Someone from your past will reach out with good news. Keep your communication channels open.",
+            "category": "relationships",
+            "area": "social"
+        },
+        {
+            "emoji": "✨",
+            "message": "Your hard work is about to pay off. Stay focused and maintain your current path.",
+            "category": "success",
+            "area": "work"
+        },
+        {
+            "emoji": "🌠",
+            "message": "A positive change in your financial situation is coming. Make wise decisions with your resources.",
+            "category": "finance",
+            "area": "money"
         }
     ]
 }

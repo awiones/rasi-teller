@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Rasi Teller ✨</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Get your daily fortune and predictions with Rasi Teller">
     <meta name="theme-color" content="#302b63">
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="logo.webp">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.webp">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.webp">
     <link rel="manifest" href="site.webmanifest">
     <!-- Security headers -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.gstatic.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="Referrer-Policy" content="strict-origin">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <!-- Preload critical fonts/images -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <!-- Add content caching -->
@@ -27,7 +27,7 @@
     <div class="container">
         <h1>Rasi Teller</h1>
         <p class="subtitle">
-            Rasi Teller will tell what will happens for today 
+            Rasi Teller will tell what happens for today 
             <span id="currentDate" class="current-date"></span>
         </p>
         <div class="birthday-section">
@@ -48,10 +48,12 @@
                         <input type="number" id="year" placeholder="YYYY" required>
                     </div>
                 </div>
-                <button onclick="tellFortune()" id="fortuneButton">Reveal Your Fortune</button>
+                <div class="button-container">
+                    <button onclick="tellFortune()" id="fortuneButton">Reveal Your Fortune</button>
+                    <div id="countdownDisplay" class="countdown"></div>
+                </div>
             </div>
         </div>
-        <div id="countdownDisplay" class="countdown"></div>
         <div id="errorDisplay" class="error"></div>
     </div>
 
@@ -61,6 +63,7 @@
     <!-- Add new fortune history container -->
     <div class="fortune-history">
         <h2>✨ Your Fortune History ✨</h2>
+        <a href="history-fortune.html" class="history-map-button">View History Map</a>
         <div id="fortuneHistoryContainer"></div>
     </div>
 
@@ -79,6 +82,10 @@
 
     <!-- Add popup container for fun messages -->
     <div id="funPopupContainer"></div>
-    <script src="script.js" defer></script>
+    <div class="command-input" id="commandInput">
+        <input type="text" placeholder="Type a command..." />
+    </div>
+    <script src="lib/crypto-js.min.js"></script>
+    <script src="assets/js/script.js" defer></script>
 </body>
 </html>

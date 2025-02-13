@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rasi Teller | History Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Interactive fortune history visualization">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline';">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="logo.webp">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.webp">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.webp">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="assets/css/history.css" as="style">
+    <link rel="preload" href="assets/js/history.js" as="script">
+    
+    <!-- Add resource hints -->
+    <link rel="dns-prefetch" href="/">
+    
+    <!-- Add async loading for non-critical JS -->
+    <script defer src="assets/js/history.js"></script>
+    <link rel="stylesheet" href="assets/css/history.css">
+</head>
+<body>
+    <!-- Add loading state -->
+    <div id="loadingIndicator" class="loading-indicator">Loading...</div>
+    
+    <!-- Add container queries support -->
+    <div style="container-type: inline-size;">
+        <div class="stars" id="starsContainer"></div>
+        <div class="grid-pattern"></div>
+        <div class="constellation-wrapper">
+            <div class="constellation-container" id="constellationContainer">
+                <!-- Fortune constellations will be generated here -->
+            </div>
+        </div>
+        <div id="fortunePopup" class="fortune-popup">
+            <div class="popup-content">
+                <span class="close-popup">&times;</span>
+                <div id="fortuneDetails"></div>
+            </div>
+        </div>
+        <a href="index.html" class="back-button">← Back to Fortune Teller</a>
+        <button class="center-button" id="centerButton">Center Map</button>
+    </div>
+</body>
+</html>
