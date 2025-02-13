@@ -25,16 +25,18 @@ const starConnections = new Map();
 
 function createBackgroundStars() {
     const starsContainer = document.getElementById('starsContainer');
-    const numberOfStars = 100;
+    const isMobile = window.innerWidth <= 768;
+    const numberOfStars = isMobile ? 50 : 100; // Fewer stars on mobile
+    const starSize = isMobile ? 1 : 2; // Smaller stars on mobile
     
     for (let i = 0; i < numberOfStars; i++) {
         const star = document.createElement('div');
-        star.className = 'fortune-star';
-        star.style.width = '2px';
-        star.style.height = '2px';
+        star.className = 'background-star'; // Changed from 'fortune-star' to 'background-star'
+        star.style.width = `${starSize}px`;
+        star.style.height = `${starSize}px`;
         star.style.left = `${Math.random() * 100}%`;
         star.style.top = `${Math.random() * 100}%`;
-        star.style.opacity = Math.random() * 0.5 + 0.3;
+        star.style.opacity = Math.random() * 0.3 + 0.2; // Reduced opacity range
         starsContainer.appendChild(star);
     }
 }
@@ -587,78 +589,94 @@ function getHueForCategory(category) {
 function showFortuneDetails(fortune, starElement) {
     const popup = document.getElementById('fortunePopup');
     const details = document.getElementById('fortuneDetails');
-    const allStars = document.querySelectorAll('.fortune-star');
+    const date = new Date(fortune.timestamp);
     
     // Remove active class from all stars
-    allStars.forEach(star => star.classList.remove('active'));
-    // Add active class to clicked star
+    document.querySelectorAll('.fortune-star').forEach(star => star.classList.remove('active'));
     starElement.classList.add('active');
     
-    const date = new Date(fortune.timestamp);
     details.innerHTML = `
-        <div class="fortune-details">
-            <p>${fortune.fortune.emoji} ${fortune.fortune.message}</p>
-            <p><span>Category</span> ${fortune.fortune.category}</p>
-            <p><span>Area</span> ${fortune.fortune.area}</p>
-            <div class="fortune-timestamp">
-                Received on ${date.toLocaleDateString(undefined, {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                })} at ${date.toLocaleTimeString()}
+        <div class="fortune-content">
+            <div class="fortune-message">
+                <div class="fortune-emoji">${fortune.fortune.emoji}</div>
+                ${fortune.fortune.message}
+            </div>
+            <div class="fortune-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Category</div>
+                    <div class="meta-value">${fortune.fortune.category}</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Area</div>
+                    <div class="meta-value">${fortune.fortune.area}</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Received</div>
+                    <div class="meta-value">${date.toLocaleDateString(undefined, {
+                        month: 'long',
+                        day: 'numeric',
+                        year: 'numeric'
+                    })}</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Time</div>
+                    <div class="meta-value">${date.toLocaleTimeString(undefined, {
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    })}</div>
+                </div>
             </div>
         </div>
     `;
 
-    // Show popup with animation reset
-    popup.style.display = 'block';
+    // Show popup with animation
+    popup.style.display = 'flex';
     const content = popup.querySelector('.popup-content');
+    
+    // Reset and trigger animation
     content.style.animation = 'none';
-    content.offsetHeight; // Trigger reflow
+    content.offsetHeight;
     content.style.animation = null;
 
-    // Add close functionality
-    const closeBtn = document.querySelector('.close-popup');
-    const closePopup = () => {
+    // Handle touch events for mobile
+    let startY = 0;
+    let currentY = 0;
+
+    function handleTouchStart(e) {
+        if (window.innerWidth > 768) return;
+        startY = e.touches[0].clientY;
+    }
+
+    function handleTouchMove(e) {
+        if (window.innerWidth > 768) return;
+        const touch = e.touches[0];
+        const deltaY = touch.clientY - startY;
+        
+        if (content.scrollTop <= 0 && deltaY > 0) {
+            e.preventDefault();
+        }
+    }
+
+    content.addEventListener('touchstart', handleTouchStart);
+    content.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+    // Close handlers
+    const cleanup = () => {
         popup.style.display = 'none';
         starElement.classList.remove('active');
+        content.removeEventListener('touchstart', handleTouchStart);
+        content.removeEventListener('touchmove', handleTouchMove);
     };
 
-    closeBtn.onclick = closePopup;
+    popup.querySelector('.close-popup').onclick = cleanup;
     popup.onclick = (e) => {
-        if (e.target === popup) closePopup();
+        if (e.target === popup) cleanup();
     };
 
     // Close on escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closePopup();
+        if (e.key === 'Escape') cleanup();
     }, { once: true });
-
-    // Pause animations of nearby stars for better focus
-    const nearbyStars = findNearbyStars(starElement, 100);
-    nearbyStars.forEach(star => {
-        star.style.animationPlayState = 'paused';
-        setTimeout(() => {
-            star.style.animationPlayState = 'running';
-        }, 2000);
-    });
-}
-
-function findNearbyStars(centerStar, radius) {
-    const stars = document.querySelectorAll('.fortune-star');
-    const centerRect = centerStar.getBoundingClientRect();
-    const centerX = centerRect.left + centerRect.width / 2;
-    const centerY = centerRect.top + centerRect.height / 2;
-
-    return Array.from(stars).filter(star => {
-        if (star === centerStar) return false;
-        const rect = star.getBoundingClientRect();
-        const starX = rect.left + rect.width / 2;
-        const starY = rect.top + rect.height / 2;
-        const distance = Math.hypot(centerX - starX, centerY - starY);
-        return distance < radius;
-    });
 }
 
 // Handle window resize
@@ -1297,4 +1315,92 @@ function createLatestIndicator(targetStar) {
     indicator.cleanup = () => observer.disconnect();
 
     return indicator;
+}
+
+function initializeMobileSupport() {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (!isMobile) return;
+
+    const container = document.getElementById('constellationContainer');
+    
+    // Adjust line visibility for mobile
+    function updateMobileLines() {
+        const lines = document.querySelectorAll('.constellation-line');
+        lines.forEach(line => {
+            // Force recalculation of line positions
+            if (line.updatePosition) {
+                line.style.opacity = '1';
+                line.style.display = 'block';
+                line.updatePosition();
+            }
+        });
+    }
+
+    // Add touch event handlers for better mobile interaction
+    let lastTapTime = 0;
+    container.addEventListener('touchstart', (e) => {
+        const currentTime = new Date().getTime();
+        const tapLength = currentTime - lastTapTime;
+        
+        if (tapLength < 500 && tapLength > 0) {
+            // Double tap detected - center view
+            e.preventDefault();
+            centerView(true);
+        }
+        lastTapTime = currentTime;
+
+        // Update lines when user starts interacting
+        updateMobileLines();
+    });
+
+    container.addEventListener('touchend', () => {
+        // Update lines after interaction ends
+        setTimeout(updateMobileLines, 100);
+    });
+
+    // Update lines during scroll/zoom
+    container.addEventListener('scroll', () => {
+        requestAnimationFrame(updateMobileLines);
+    });
+
+    // Force update lines periodically on mobile
+    setInterval(updateMobileLines, 1000);
+}
+
+// Enhance the updateLinePosition function for better mobile support
+function updateLinePosition(line) {
+    if (!line.star1 || !line.star2) return;
+
+    const container = line.parentElement;
+    const containerTransform = getComputedStyle(container).transform;
+    const matrix = new DOMMatrix(containerTransform);
+    const scale = matrix.a;
+
+    requestAnimationFrame(() => {
+        const star1Rect = line.star1.getBoundingClientRect();
+        const star2Rect = line.star2.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+
+        // Calculate positions with improved precision
+        const x1 = (star1Rect.left + star1Rect.width/2 - containerRect.left) / scale;
+        const y1 = (star1Rect.top + star1Rect.height/2 - containerRect.top) / scale;
+        const x2 = (star2Rect.left + star2Rect.width/2 - containerRect.left) / scale;
+        const y2 = (star2Rect.top + star2Rect.height/2 - containerRect.top) / scale;
+
+        const dx = x2 - x1;
+        const dy = y2 - y1;
+        const length = Math.hypot(dx, dy);
+        const angle = Math.atan2(dy, dx);
+
+        // Apply hardware acceleration and force visibility
+        line.style.width = `${length}px`;
+        line.style.left = `${x1}px`;
+        line.style.top = `${y1}px`;
+        line.style.transform = `rotate(${angle}rad) translateZ(0)`;
+        line.style.display = 'block';
+        line.style.opacity = '1';
+        
+        // Force GPU acceleration
+        line.style.willChange = 'transform';
+    });
 }

@@ -479,6 +479,66 @@
             "message": "A positive change in your financial situation is coming. Make wise decisions with your resources.",
             "category": "finance",
             "area": "money"
+        },
+        {
+            "emoji": "🌈",
+            "message": "Your ability to find joy in simple things will bring unexpected happiness today.",
+            "category": "mindfulness",
+            "area": "personal"
+        },
+        {
+            "emoji": "📖",
+            "message": "Knowledge sought today will become invaluable tomorrow. Follow your curiosity.",
+            "category": "learning",
+            "area": "personal"
+        },
+        {
+            "emoji": "🎭",
+            "message": "Being yourself will attract the right opportunities today. Don't try to fit in.",
+            "category": "authenticity",
+            "area": "personal"
+        },
+        {
+            "emoji": "🎨",
+            "message": "Your unique perspective will lead to an innovative solution at work.",
+            "category": "creativity",
+            "area": "work"
+        },
+        {
+            "emoji": "🌱",
+            "message": "A small act of kindness today will grow into something meaningful.",
+            "category": "kindness",
+            "area": "relationships"
+        },
+        {
+            "emoji": "🎵",
+            "message": "Listen carefully today - important messages come in unexpected forms.",
+            "category": "awareness",
+            "area": "general"
+        },
+        {
+            "emoji": "🔮",
+            "message": "Trust your intuition about a upcoming decision. Your inner voice is right.",
+            "category": "intuition",
+            "area": "decisions"
+        },
+        {
+            "emoji": "🎪",
+            "message": "Step out of your routine today. Adventure leads to opportunity.",
+            "category": "adventure",
+            "area": "personal"
+        },
+        {
+            "emoji": "🌺",
+            "message": "Beauty surrounds you today. Take time to appreciate the little things.",
+            "category": "gratitude",
+            "area": "mindfulness"
+        },
+        {
+            "emoji": "🎲",
+            "message": "Take that calculated risk you've been considering. The odds are in your favor.",
+            "category": "opportunity",
+            "area": "decisions"
         }
     ]
 }

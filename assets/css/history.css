@@ -367,20 +367,27 @@ body {
     z-index: 1000;
     backdrop-filter: blur(8px);
     animation: fadeIn 0.3s ease-out;
+    overflow-y: auto; /* Enable scrolling on mobile */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .popup-content {
-    position: absolute;
+    position: fixed; /* Change from absolute to fixed */
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.95);
+    transform: translate(-50%, -50%);
     background: linear-gradient(165deg, 
         rgba(40, 36, 61, 0.98), 
         rgba(20, 17, 34, 0.95));
-    padding: 40px;
+    width: min(600px, calc(100% - 48px)); /* Simplified width calculation */
+    max-height: 85vh;
+    margin: 0; /* Reset margin */
+    padding: 50px 30px 30px;
     border-radius: 28px;
-    min-width: 340px;
-    max-width: 90%;
     border: 1px solid rgba(127, 90, 240, 0.3);
     box-shadow: 
         0 20px 40px rgba(0, 0, 0, 0.4),
@@ -390,6 +397,58 @@ body {
     opacity: 0;
     animation: popIn 0.4s ease-out forwards;
     backdrop-filter: blur(10px);
+    overflow-y: auto;
+}
+
+.fortune-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.fortune-message {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    padding: 20px;
+    background: rgba(127, 90, 240, 0.1);
+    border-radius: 16px;
+    border-left: 4px solid rgba(127, 90, 240, 0.5);
+}
+
+.fortune-emoji {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.fortune-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.meta-item {
+    padding: 15px;
+    background: rgba(127, 90, 240, 0.08);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.meta-item:hover {
+    background: rgba(127, 90, 240, 0.12);
+    transform: translateY(-2px);
+}
+
+.meta-label {
+    font-size: 0.85rem;
+    color: rgba(127, 90, 240, 0.9);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.meta-value {
+    font-size: 1rem;
+    color: #fff;
 }
 
 .close-popup {
@@ -433,6 +492,17 @@ body {
     z-index: 9999;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     animation: fadeInOut 1.5s ease-in-out infinite;
+}
+
+/* Add new background-star class */
+.background-star {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    pointer-events: none;
+    will-change: transform;
+    animation: twinkle 3s ease-in-out infinite;
+    transform-origin: center;
 }
 
 @keyframes twinkle {
@@ -548,9 +618,47 @@ body {
     }
 
     .popup-content {
-        min-width: 300px;
-        padding: 30px;
-        margin: 20px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: calc(100vw - 32px); /* Change to viewport width */
+        max-width: 400px;
+        max-height: 80vh;
+        margin: 0;
+        padding: 45px 20px 25px;
+        border-radius: 20px;
+        overflow-y: auto;
+        right: auto; /* Remove right positioning */
+        bottom: auto; /* Remove bottom positioning */
+    }
+
+    .fortune-popup {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 16px; /* Reduced padding */
+        box-sizing: border-box; /* Add this to include padding in width calculation */
+    }
+
+    .fortune-details {
+        margin-top: 10px;
+    }
+
+    .fortune-details p {
+        margin: 8px 0;
+        font-size: 0.9rem;
+    }
+
+    .fortune-details p:first-child {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .fortune-timestamp {
+        font-size: 0.8rem;
+        margin-top: 15px;
+        padding-top: 12px;
     }
 
     .fortune-details p {
@@ -570,11 +678,114 @@ body {
     }
 
     .close-popup {
-        top: 10px;
-        right: 15px;
-        width: 25px;
-        height: 25px;
-        font-size: 24px;
+        top: 12px; /* Adjusted position */
+        right: 12px; /* Adjusted position */
+        width: 32px;
+        height: 32px;
+        background: rgba(127, 90, 240, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: white;
+        cursor: pointer;
+        z-index: 2;
+        transition: all 0.3s ease;
+    }
+
+    .close-popup:hover, 
+    .close-popup:active {
+        background: rgba(127, 90, 240, 0.3);
+        transform: rotate(90deg);
+    }
+
+    .constellation-line {
+        height: 3px; /* Thicker lines for better visibility on mobile */
+        opacity: 1 !important; /* Force line visibility */
+        background: rgba(127, 90, 240, 0.6); /* Increased opacity for better visibility */
+        box-shadow: 0 0 8px rgba(127, 90, 240, 0.4);
+        pointer-events: none;
+        will-change: transform, width, left, top;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform-style: preserve-3d;
+    }
+
+    .constellation-container {
+        transform-origin: center center !important;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        perspective: 1000;
+        -webkit-perspective: 1000;
+    }
+
+    /* Improve touch targets */
+    .fortune-star {
+        width: 12px !important;
+        height: 12px !important;
+        touch-action: none;
+    }
+
+    /* Remove the previous mobile star styles */
+    #starsContainer .fortune-star {
+        display: none;
+    }
+
+    /* Add specific styles for background stars */
+    .background-star {
+        width: 1px !important;
+        height: 1px !important;
+        opacity: 0.4;
+    }
+
+    /* Keep constellation stars larger */
+    #constellationContainer .fortune-star {
+        width: 12px !important;
+        height: 12px !important;
+    }
+
+    .popup-content {
+        width: calc(100% - 32px);
+        max-height: min(600px, 80vh);
+        overflow-y: auto;
+        margin: 16px;
+        padding: 45px 20px 25px;
+        border-radius: 20px;
+    }
+
+    .fortune-message {
+        font-size: 1.1rem;
+        padding: 16px;
+    }
+
+    .fortune-emoji {
+        font-size: 1.8rem;
+    }
+
+    .meta-item {
+        padding: 12px;
+    }
+
+    .close-popup {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 32px;
+        height: 32px;
+        background: rgba(127, 90, 240, 0.15);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+        z-index: 2;
     }
 }
 
@@ -595,6 +806,17 @@ body {
     .fortune-star.active::after {
         display: block; /* Show tooltip only for active star */
     }
+
+    .close-popup {
+        width: 44px; /* Larger touch target */
+        height: 44px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .popup-content {
+        padding-top: 50px; /* Make room for the close button */
+    }
 }
 
 /* Add container queries for better responsive design */
@@ -612,5 +834,49 @@ body {
     .grid-pattern {
         animation: none;
         transition: none;
+    }
+}
+
+/* Add specific fixes for iOS devices */
+@supports (-webkit-touch-callout: none) {
+    .constellation-line {
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
+
+    .constellation-container {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Support for notched devices */
+@supports (padding: max(0px)) {
+    @media (max-width: 768px) {
+        .popup-content {
+            width: calc(100vw - max(32px, env(safe-area-inset-left) + env(safe-area-inset-right)));
+            margin: max(0px, env(safe-area-inset-left)) max(0px, env(safe-area-inset-right));
+        }
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes popInMobile {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
     }
 }
